@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// SUA CONEXÃO ORIGINAL - NÃO ALTEREI
+// conexão com banco de dados
 $hostname = "localhost";
 $bancodedados = "biblioteca";
 $usuario = "root";
@@ -17,10 +17,10 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-// Verificar se a tabela livros existe, se não, criar
+// Verificar se na tabela têm coluna livros 
 $check_table = $mysqli->query("SHOW TABLES LIKE 'livros'");
 if ($check_table->num_rows == 0) {
-    // Criar tabela se não existir
+    // Criar tabela caso ela não existir
     $create_table = "CREATE TABLE livros (
         id INT AUTO_INCREMENT PRIMARY KEY,
         livrodb VARCHAR(255) NOT NULL,
@@ -34,10 +34,10 @@ if ($check_table->num_rows == 0) {
     }
 }
 
-// Verificar o tipo de ação
+// para verificar a ação que estão realizando
 $acao = $_POST['acao'] ?? '';
 
-// ADICIONAR LIVRO
+// adicionar o livro no banco
 if ($acao === 'adicionar') {
     $livrodb = $_POST['livrodb'] ?? '';
     $autor_livro = $_POST['autor_livro'] ?? '';
@@ -64,7 +64,7 @@ if ($acao === 'adicionar') {
     }
 }
 
-// BUSCAR LIVRO
+// procurar livro
 else if ($acao === 'buscar') {
     $id = $_POST['id'] ?? '';
     
@@ -93,7 +93,7 @@ else if ($acao === 'buscar') {
     }
 }
 
-// RENOMEAR LIVRO
+// renomear o livro
 else if ($acao === 'renomear') {
     $id = $_POST['id'] ?? '';
     $livrodb = $_POST['livrodb'] ?? '';
@@ -125,7 +125,7 @@ else if ($acao === 'renomear') {
     }
 }
 
-// EXCLUIR LIVRO
+// deletar o livro
 else if ($acao === 'excluir') {
     $id = $_POST['id'] ?? '';
     
@@ -155,7 +155,7 @@ else if ($acao === 'excluir') {
     }
 }
 
-// AÇÃO NÃO RECONHECIDA
+// quando a ação não é reconhecida
 else {
     echo json_encode(["success" => false, "error" => "Ação não reconhecida: " . $acao]);
 }

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputautor = document.getElementById('Autor');
     const buttonenviar = document.getElementById('enviar');
 
-    // Elementos da seção BUSCAR (o input não tem ID, vamos pegar por seletor)
+    // Elementos da seção BUSCAR 
     const inputprocurar = document.querySelector('.barra-buscar input');
     const buttonbuscar = document.querySelector('.barra-buscar button');
 
