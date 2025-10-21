@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="PT_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio de aprendiz</title>
+    <!-- CSS externo -->
+     <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Geranciador de livros</h1>
+    
+    <section class="barra-add">
+        <h2>Adicionar Livro</h2>
+        <input type="text" placeholder="Nome do livro" id="livro">
+        <input type="text" placeholder="Autor do livro" id="Autor">
+        <button id="enviar">Adicionar</button>
+    </section>
+
+    <section class="barra-buscar">
+        <h2>Buscar livro por ID</h2>
+        <input type="text" placeholder="Digite o id do livro">
+        <button id="enviar">Buscar</button>
+    </section>
+
+    <section class="barra-renomear">
+        <h2>Renomear Livro por ID</h2>
+        <input type="text" placeholder="Digite o ID do livro" id="rid">
+        <input type="text" placeholder="Novo Nome do Livro" id="rlivro">
+        <input type="text" placeholder="Novo Nome do Autor" id="rautor">
+        <button id="trocar">Renomear</button>
+    </section>
+
+    <section class="barra-remover">
+        <h2>Excluir Livro por ID</h2>
+        <input type="text" placeholder="Digite o ID do livro" id="excluir">
+        <button id="remover">Remover</button>
+    </section>
+
+    <!-- JS -->>
+    <script src="script.js"></script>
+</body>
+</html>
