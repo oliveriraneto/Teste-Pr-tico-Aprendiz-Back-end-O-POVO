@@ -37,7 +37,7 @@ A aplicação implementa um sistema de *biblioteca virtual*, com operações com
    C:\xampp\htdocs\
 4. Verifique se o banco de dados já existe no **phpMyAdmin** (nome: `biblioteca`) ou crie-o manualmente.
 5. Abra o navegador e acesse a aplicação via:
-   http://localhost/nome da pasta/public/index.html
+   http://localhost/ nome da pasta/public/index.html
 6. Teste as funcionalidades do CRUD: adicionar, buscar, renomear e excluir livros.
 
 ## 🗂️ Estrutura do Projeto
