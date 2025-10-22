@@ -32,12 +32,12 @@ A aplicação implementa um sistema de *biblioteca virtual*, com operações com
 
 1. Instale o **XAMPP** e inicie os módulos **Apache** e **MySQL**.  
 2. Clone o repositório:
-   git clone https://github.com/oliveriraneto/Teste-Pr-tico-Aprendiz-Back-end-O-POVO.git
+   git clone https://github.com/oliveriraneto/Teste-Pratico-Aprendiz-Back-end-O-POVO.git
 3. Mova a pasta do projeto para o diretório:
    C:\xampp\htdocs\
 4. Verifique se o banco de dados já existe no **phpMyAdmin** (nome: `biblioteca`) ou crie-o manualmente.
 5. Abra o navegador e acesse a aplicação via:
-   http://localhost/Teste-Pr-tico-Aprendiz-Back-end-O-POVO/public/index.html
+   http://localhost/nome da pasta/public/index.html
 6. Teste as funcionalidades do CRUD: adicionar, buscar, renomear e excluir livros.
 
 ## 🗂️ Estrutura do Projeto
