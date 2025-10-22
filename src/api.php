@@ -19,19 +19,12 @@ if ($mysqli->connect_errno) {
 
 // Verificar se na tabela têm coluna livros 
 $check_table = $mysqli->query("SHOW TABLES LIKE 'livros'");
-if ($check_table->num_rows == 0) {
-    // Criar tabela caso ela não existir
-    $create_table = "CREATE TABLE livros (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        livrodb VARCHAR(255) NOT NULL,
-        autor_livro VARCHAR(255) NOT NULL,
-        data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )";
-    
-    if (!$mysqli->query($create_table)) {
-        echo json_encode(["success" => false, "error" => "Erro ao criar tabela: " . $mysqli->error]);
-        exit();
-    }
+if ($check_table === false) {
+    echo json_encode(["success" => false, "error" => "Erro ao verificar a tabela: " . $mysqli->error]);
+    exit();
+} elseif ($check_table->num_rows == 0) {
+    echo json_encode(["success" => false, "error" => "A tabela 'livros' não existe no banco de dados."]);
+    exit();
 }
 
 // para verificar a ação que estão realizando
@@ -126,6 +119,7 @@ else if ($acao === 'renomear') {
 }
 
 // deletar o livro
+
 else if ($acao === 'excluir') {
     $id = $_POST['id'] ?? '';
     

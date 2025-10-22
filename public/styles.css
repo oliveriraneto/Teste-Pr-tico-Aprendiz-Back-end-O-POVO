@@ -1,33 +1,104 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-.barra-add {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 28px;
-}
-
-.barra-buscar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 28px;
-}
-
-.barra-renomear {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 28px;
-}
-
+.barra-add,
+.barra-buscar,
+.barra-renomear,
 .barra-remover {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Botão genérico */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+}
+
+/* Cores específicas pra cada barra */
+.barra-add .button {
+  background-color: #28a745; /* verde */
+}
+
+.barra-buscar .button {
+  background-color: #007bff; /* azul */
+}
+
+.barra-renomear .button {
+  background-color: #ffc107; /* amarelo */
+}
+
+.barra-remover .button {
+  background-color: #dc3545; /* vermelho */
+}
+
+/* Efeitos de hover */
+.button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button:hover {
+  color: #fff;
+}
+
+/* Container geral */
+.container {
+  padding-top: 50px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  color: #777;
+}
+
+span {
+  display: block;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  color: #777;
+}
+
+span a {
+  font-size: 0.7rem;
+  color: #999;
+  text-decoration: underline;
 }

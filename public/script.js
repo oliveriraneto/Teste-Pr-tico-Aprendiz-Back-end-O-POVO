@@ -74,18 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            console.log('Resposta recebida:', response);
-            return response.json();
-        })
-        .then(data => {
-            console.log('Dados processados:', data);
-            if (data.success) {
-                alert('Livro adicionado com sucesso! ID: ' + data.id);
-                if (inputnome) inputnome.value = '';
-                if (inputautor) inputautor.value = '';
-            } else {
-                alert('Erro: ' + data.error);
+        .then(response => response.text()) // pega o texto primeiro
+        .then(text => {
+            try {
+                const data = JSON.parse(text); // tenta transformar em JSON
+                console.log('Dados processados:', data);
+                if (data.success) {
+                    alert('Livro adicionado com sucesso! ID: ' + data.id);
+                    if (inputnome) inputnome.value = '';
+                    if (inputautor) inputautor.value = '';
+                } else {
+                    alert('Erro: ' + data.error);
+                }
+            } catch (err) {
+                console.error('Erro ao processar JSON:', text);
+                alert('Erro ao adicionar livro. Verifique o console.');
             }
         })
         .catch(error => {
@@ -113,13 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Resposta da busca:', data);
-            if (data.success) {
-                alert(`Livro encontrado:\nID: ${data.livro.id}\nNome: ${data.livro.livrodb}\nAutor: ${data.livro.autor_livro}`);
-            } else {
-                alert('Livro não encontrado!');
+        .then(response => response.text())
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                console.log('Resposta da busca:', data);
+                if (data.success) {
+                    alert(`Livro encontrado:\nID: ${data.livro.id}\nNome: ${data.livro.livrodb}\nAutor: ${data.livro.autor_livro}`);
+                } else {
+                    alert('Livro não encontrado ou erro: ' + data.error);
+                }
+            } catch (err) {
+                console.error('Erro ao processar JSON:', text);
+                alert('Erro ao buscar livro. Verifique o console.');
             }
         })
         .catch(error => {
@@ -151,16 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Resposta da renomeação:', data);
-            if (data.success) {
-                alert('Livro atualizado com sucesso!');
-                if (inputrid) inputrid.value = '';
-                if (inputrlivro) inputrlivro.value = '';
-                if (inputrautor) inputrautor.value = '';
-            } else {
-                alert('Erro: ' + data.error);
+        .then(response => response.text())
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                console.log('Resposta da renomeação:', data);
+                if (data.success) {
+                    alert('Livro atualizado com sucesso!');
+                    if (inputrid) inputrid.value = '';
+                    if (inputrlivro) inputrlivro.value = '';
+                    if (inputrautor) inputrautor.value = '';
+                } else {
+                    alert('Erro: ' + data.error);
+                }
+            } catch (err) {
+                console.error('Erro ao processar JSON:', text);
+                alert('Erro ao atualizar livro. Verifique o console.');
             }
         })
         .catch(error => {
@@ -188,14 +203,20 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Resposta da exclusão:', data);
-            if (data.success) {
-                alert('Livro excluído com sucesso!');
-                if (inputexcluir) inputexcluir.value = '';
-            } else {
-                alert('Erro: ' + data.error);
+        .then(response => response.text())
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                console.log('Resposta da exclusão:', data);
+                if (data.success) {
+                    alert('Livro excluído com sucesso!');
+                    if (inputexcluir) inputexcluir.value = '';
+                } else {
+                    alert('Erro: ' + data.error);
+                }
+            } catch (err) {
+                console.error('Erro ao processar JSON:', text);
+                alert('Erro ao excluir livro. Verifique o console.');
             }
         })
         .catch(error => {
